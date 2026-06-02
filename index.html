@@ -1,0 +1,173 @@
+<!-- <!DOCTYPE html> avisa o navegador que este documento é HTML5 -->
+<!doctype html>
+<!-- lang="pt-BR" define o idioma da página como português do Brasil -->
+<html lang="pt-BR">
+  <!-- <head> contém metadados e configurações da página (não aparece visualmente) -->
+  <head>
+    <!-- <meta charset="UTF-8"> define a codificação de caracteres (acentos, etc) -->
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport"> controla como a página aparece em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="description"> fornece um resumo da página para mecanismos de busca -->
+    <meta
+      name="description"
+      content="Landing page profissional para suporte técnico e infraestrutura de TI, com serviços, diferenciais e contato."
+    />
+    <title>Suporte Técnico e Infraestrutura de TI</title>
+    <!-- <link> conecta o HTML com outros arquivos, como o CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- <header class="site-header">: class mais específica para estilizar sem conflitos -->
+    <header class="site-header">
+      <div class="container">
+        <!-- <div> é um contêiner genérico para agrupar elementos -->
+        <div class="brand">
+          <!-- <h1> é o título principal da página -->
+          <h1>RafaelTech</h1>
+          <!-- <p> é um parágrafo de texto -->
+          <p>Suporte técnico e soluções em informática para residências e pequenos negócios.</p>
+        </div>
+        <!-- <nav> é a seção de navegação com os links do menu -->
+        <nav>
+          <!-- <ul> é uma lista sem ordem numerada -->
+          <ul>
+            <!-- <li> é um item dentro de uma lista -->
+            <!-- <a> é um link, href com # leva até a seção que tem o mesmo id -->
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- <main> é a região principal, onde fica o conteúdo importante -->
+    <main>
+      <!-- <section> divide a página em blocos de conteúdo diferentes -->
+      <!-- id serve como identificador único, usado nos links e no CSS -->
+      <section id="hero">
+        <div class="container">
+          <div class="hero-content">
+            <!-- <h2> é um subtítulo, menor que o <h1> -->
+            <h2>Atendimento rápido e confiável para computadores, redes e manutenção em TI</h2>
+            <p>
+              Tecnologia e suporte para garantir mais desempenho e estabilidade no seu dia a dia.
+            </p>
+            <!-- <a> com href="#contato" leva a página até a seção de contato -->
+            <a href="#contato">Solicitar diagnóstico gratuito</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Outra <section>, agora com o conteúdo de serviços -->
+      <section id="servicos">
+        <div class="container">
+          <header>
+            <h2>Serviços que oferecemos</h2>
+            <p>
+              Atendimento técnico e soluções em informática alinhados às suas necessidades.
+            </p>
+          </header>
+          <!-- class agrupa elementos com o mesmo estilo visual -->
+          <div class="cards">
+            <!-- <article> representa um item ou card independente -->
+            <article>
+              <!-- <h4> é um título de nível 4, usado dentro de cards -->
+              <h4>Suporte técnico remoto e presencial</h4>
+              <p>
+                Resolução ágil de incidentes, manutenção preventiva e
+                atendimento especializado para usuários e equipamentos.
+              </p>
+            </article>
+            <article>
+              <h4>Gerenciamento de rede e segurança</h4>
+              <p>
+                Configuração de redes, backup e suporte para manter seus dispositivos e conexões mais seguros.
+              </p>
+            </article>
+            <article>
+              <h4>Infraestrutura de TI</h4>
+              <p>
+                Configuração e suporte para computadores, redes e sistemas com foco em estabilidade e desempenho.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- O id "diferenciais" é o destino do link href="#diferenciais" no menu -->
+      <section id="diferenciais">
+        <div class="container">
+          <header>
+            <h2>Por que escolher nossos serviços?</h2>
+          </header>
+          <!-- <ul> e <li>: lista de itens sem numeração -->
+          <ul>
+            <li>
+              <!-- <strong> deixa o texto em negrito para dar destaque -->
+              <strong>Atendimento rápido</strong>
+              <p>
+                Suporte ágil e atendimento contínuo para resolver problemas com eficiência.
+              </p>
+            </li>
+            <li>
+              <strong>Experiência em suporte técnico</strong>
+              <p>
+                Atendimento especializado para computadores, redes e soluções em informática.
+              </p>
+            </li>
+            <li>
+              <strong>Soluções personalizadas</strong>
+              <p>
+                Serviços adaptados às necessidades de residências e pequenos negócios.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Seção de contato, último destino do menu -->
+      <section id="contato">
+        <div class="container">
+          <header>
+            <h2>Precisa de suporte técnico?</h2>
+            <p>Entre em contato para atendimento e soluções em informática.</p>
+          </header>
+          <!-- <form> é o formulário, usado para enviar dados para o servidor -->
+          <!-- method="post" significa que os dados são enviados ocultos na requisição -->
+          <!-- action="#" é o endereço para onde os dados serão enviados -->
+          <form method="post" action="#">
+            <div>
+              <!-- <label> é o rótulo do campo, for="nome" liga ao input com id="nome" -->
+              <label for="nome">Nome completo</label>
+              <!-- <input> é o campo de digitação, type="text" é texto comum -->
+              <!-- name="nome" é como o campo será identificado no servidor -->
+              <!-- required obriga o usuário a preencher antes de enviar -->
+              <input type="text" id="nome" name="nome" required />
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <!-- type="email" faz o navegador validar se o valor digitado é um e-mail -->
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div>
+              <label for="mensagem">Mensagem</label>
+              <!-- <textarea> é uma caixa de texto maior, rows="5" define 5 linhas de altura -->
+              <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+            </div>
+            <!-- <button type="submit"> envia o formulário quando clicado -->
+            <button type="submit">Enviar solicitação</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- <footer class="site-footer">: classe específica para o rodapé, evita conflitos -->
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 RafaelTech. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>

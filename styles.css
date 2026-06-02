@@ -1,0 +1,432 @@
+/* ===== RESET E BASE ===== */
+
+/* @import baixa a fonte Inter do Google Fontes para usar na página */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* O seletor * (asterisco) seleciona TODOS os elementos da página */
+
+/* box-sizing: border-box faz com que padding e borda não aumentem o tamanho total do elemento */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== VARIÁVEIS CSS ===== */
+
+/* :root define variáveis CSS que podem ser reutilizadas em toda a página */
+/* --bg, --text, --primary etc são nomes de variáveis que começam com -- */
+:root {
+  --bg: #f5f8ff;
+  --surface: #ffffff;
+  --text: #1b2538;
+  --muted: #5d6b84;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --border: rgba(27, 37, 56, 0.08);
+  --border-soft: rgba(37, 99, 235, 0.12);
+  --input-bg: #f8fbff;
+  --radius: 1rem;
+  --radius-lg: 1.75rem;
+  --space-lg: 1.75rem;
+  --shadow-sm: 0 22px 50px rgba(32, 46, 84, 0.08);
+  --shadow-md: 0 20px 40px rgba(27, 37, 56, 0.08);
+}
+
+/* ===== ELEMENTOS BASE ===== */
+
+/* scroll-behavior: smooth faz a página rolar suavemente ao clicar em links internos */
+html {
+  scroll-behavior: smooth;
+}
+
+/* font-family define a sequência de fontes do texto, a primeira disponível será usada */
+/* var(--nome) usa o valor de uma variável definida no :root */
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+/* display: block faz a imagem ocupar toda a linha, max-width: 100% impede que ultrapasse o tamanho do container */
+img,
+picture,
+video,
+iframe,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* color: inherit faz o link usar a mesma cor do elemento pai */
+/* text-decoration: none remove o sublinhado padrão dos links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* font: inherit faz inputs e botões usarem a mesma fonte do resto da página */
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+/* ===== LAYOUT ===== */
+
+/* .container: classe que centraliza o conteúdo e limita a largura máxima */
+/* min() escolhe o menor valor entre 1180px e 100% - 3rem, assim fica responsivo */
+/* margin: 0 auto centraliza horizontalmente */
+.container {
+  width: min(1180px, calc(100% - 3rem));
+  margin: 0 auto;
+}
+
+/* ===== HEADER ===== */
+
+/* .site-header: seletor de classe mais específico que header, evita conflito com headers internos */
+.site-header {
+  padding: 1.5rem 0;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+/* display: flex alinha os elementos filhos lado a lado */
+/* justify-content: space-between joga a marca pra esquerda e o nav pra direita */
+/* align-items: center centraliza verticalmente */
+/* .site-header .container: seletor específico para evitar conflitos com headers internos */
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* letter-spacing: 0.06em dá um espaçamento extra entre as letras */
+.brand h1 {
+  font-size: 1.4rem;
+  letter-spacing: 0.06em;
+}
+
+/* margin-top: 0.35rem dá um pequeno espaço entre o título e a descrição */
+.brand p {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* display: flex coloca os links do menu um do lado do outro */
+/* list-style: none remove as bolinhas padrão da lista */
+nav ul {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+/* transition: muda a cor suavemente quando o mouse passa por cima (hover) */
+/* font-weight: 500 deixa o texto um pouco mais grosso que o normal */
+nav a {
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+/* :focus-visible aparece só quando o usuário navega com teclado (Tab), sem atrapalhar clique com mouse */
+nav a:focus-visible {
+  color: var(--primary);
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+/* ===== HERO ===== */
+
+/* margin-top: 1rem empurra o <main> um pouco para baixo, criando espaço */
+main {
+  margin-top: 1rem;
+}
+
+/* #hero: a seção principal de destaque, com bastante padding e fundo gradiente */
+/* background-color é fallback: aparece se o gradiente não carregar */
+/* linear-gradient() cria um degradê que vai azul claro no topo até branco embaixo */
+#hero {
+  padding: 5rem 0;
+  background-color: #eef4ff;
+  background: linear-gradient(180deg, #eef4ff 0%, #ffffff 100%);
+}
+
+/* max-width: 680px limita a largura do texto do hero para não ficar muito extenso */
+#hero .hero-content {
+  max-width: 680px;
+}
+
+/* clamp() ajusta o tamanho da fonte entre mínimo, ideal e máximo */
+/* Ex: clamp(2.25rem, 4vw, 3.5rem) = no mínimo 2.25rem, no máximo 3.5rem, 4% da largura da tela */
+/* line-height: 1.03 controla a altura da linha, deixa o texto mais compacto */
+#hero h2 {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.03;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.4rem;
+}
+
+/* margin-bottom: 2rem dá espaço abaixo do parágrafo antes do botão */
+#hero p {
+  font-size: 1.05rem;
+  color: #4d5d7a;
+  margin-bottom: 2rem;
+}
+
+/* width: fit-content faz o link ter largura apenas do tamanho do texto */
+/* border-radius: 999px deixa o botão totalmente arredondado (formato de pílula) */
+#hero a {
+  width: fit-content;
+  padding: 1rem 1.8rem;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  /* transition anima a mudança de cor e posição do botão */
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* :focus-visible aparece quando o usuário chega no botão usando Tab */
+#hero a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+#hero a:hover {
+  /* :hover aplica estilos quando o mouse passa sobre o elemento */
+  background-color: var(--primary-dark);
+  /* translateY(-1px) move o botão 1px para cima no hover, efeito de levantar */
+  transform: translateY(-1px);
+}
+
+/* ===== SEÇÕES ===== */
+
+/* padding: 4rem 0 dá espaçamento vertical de 4rem em cima e embaixo de cada seção */
+/* scroll-margin-top: 5rem evita que o cabeçalho esconda o título ao navegar por âncora */
+section {
+  padding: 4rem 0;
+  scroll-margin-top: 5rem;
+}
+
+/* section header h2: seleciona o <h2> que está dentro de um <header> dentro de uma <section> */
+section header h2 {
+  font-size: 1.9rem;
+  margin-bottom: 0.8rem;
+}
+
+/* max-width: 700px evita que o texto fique muito largo, melhorando a leitura */
+section header p {
+  color: var(--muted);
+  max-width: 700px;
+}
+
+/* ===== SERVIÇOS ===== */
+
+/* display: grid organiza os cards em linhas e colunas */
+/* grid-template-columns: repeat(3, minmax(0, 1fr)) cria 3 colunas de tamanhos iguais */
+/* gap: 1.5rem define o espaço entre as colunas e linhas */
+#servicos .cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* border-radius: var(--radius) arredonda os cantos do card (1rem) */
+/* box-shadow cria uma sombra suave atrás do card para dar profundidade */
+#servicos article {
+  padding: 2rem;
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+/* margin-bottom: 1rem dá espaço entre o título e a descrição dentro do card */
+#servicos article h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+/* color: var(--muted) deixa o texto descritivo com uma cor mais clara que o título */
+#servicos article p {
+  color: var(--muted);
+}
+
+/* ===== DIFERENCIAIS ===== */
+
+/* grid-template-columns: repeat(3, 1fr) = 3 colunas de largura igual */
+/* list-style: none tira as bolinhas padrão da <ul> */
+#diferenciais ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  list-style: none;
+}
+
+/* border: 1px solid coloca uma borda fina ao redor do card */
+/* border-radius: var(--radius) arredonda os cantos */
+/* --space-lg é variável de espaçamento, separada do --radius-lg */
+#diferenciais li {
+  background-color: var(--surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+}
+
+/* display: block faz o <strong> ocupar a linha inteira, forçando o texto abaixo */
+#diferenciais strong {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-size: 1.05rem;
+}
+
+/* Aplica a cor muted (cinza) ao texto descritivo dentro dos diferenciais */
+#diferenciais p {
+  color: var(--muted);
+}
+
+/* ===== CONTATO ===== */
+
+/* display: grid empilha os campos do formulário um embaixo do outro */
+/* gap: 1rem espaça cada campo uniformemente */
+#contato form {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+/* display: grid com gap: 0.5rem separa o label do input dentro de cada campo */
+#contato form div {
+  display: grid;
+  gap: 0.5rem;
+}
+
+/* font-weight: 600 deixa o label do campo em negrito */
+#contato label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* width: 100% faz o input ocupar toda a largura disponível */
+/* padding: 0.95rem 1rem dá um espaçamento interno confortável */
+/* border: 1px solid var(--border) usa a variável de borda definida no :root */
+/* border-radius: 0.85rem arredonda os cantos */
+#contato input,
+#contato textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
+/* :focus é quando o usuário clica ou seleciona o campo com teclado */
+/* outline: none remove a borda padrão do navegador (azul) */
+/* box-shadow com 0 0 0 4px cria um brilho azul ao redor do campo no lugar do outline */
+#contato input:focus,
+#contato textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  /* rgba do --primary com 12% de opacidade, cria um brilho azul no foco */
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+/* width: fit-content faz o botão ter largura apenas do tamanho do texto */
+/* cursor: pointer muda o cursor para "mãozinha" quando passa em cima */
+/* border: none remove a borda padrão do botão */
+#contato button {
+  width: fit-content;
+  padding: 1rem 1.8rem;
+  border: none;
+  border-radius: 999px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  /* transition anima a mudança de cor e posição do botão */
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* focus-visible no botão de envio para acessibilidade */
+#contato button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 4px;
+}
+
+#contato button:hover {
+  background-color: var(--primary-dark);
+  /* translateY(-1px) dá o efeito de o botão levantar quando o mouse passa */
+  transform: translateY(-1px);
+}
+
+/* ===== FOOTER ===== */
+
+/* .site-footer: classe específica para o rodapé principal */
+.site-footer {
+  padding: 1.5rem 0;
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.site-footer p {
+  color: var(--muted);
+  /* text-align: center centraliza o texto do rodapé horizontalmente */
+  text-align: center;
+}
+
+/* ===== RESPONSIVO ===== */
+
+/* @media (max-width: 900px) = quando a tela for menor que 900px, aplica esses estilos */
+@media (max-width: 900px) {
+  nav ul {
+    /* flex-wrap: wrap faz os links do menu quebrarem de linha se não couberem */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #servicos .cards,
+  #diferenciais ul {
+    /* grid-template-columns: 1fr = muda de 3 colunas para apenas 1 coluna */
+    grid-template-columns: 1fr;
+  }
+}
+
+/* @media (max-width: 680px) = quando a tela for menor que 680px (celulares) */
+@media (max-width: 680px) {
+  .site-header .container,
+  #hero .container,
+  section .container,
+  .site-footer .container {
+    /* Em celular, reduz a margem lateral para 1.5rem no lugar de 3rem */
+    width: min(100%, calc(100% - 1.5rem));
+  }
+
+  #hero h2 {
+    font-size: 2rem;
+  }
+
+  #hero a,
+  #contato button {
+    /* width: 100% faz o botão ocupar a largura toda da tela no celular */
+    width: 100%;
+    text-align: center;
+  }
+}
